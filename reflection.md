@@ -7,6 +7,17 @@
 - Briefly describe your initial UML design.
 - What classes did you include, and what responsibilities did you assign to each?
 
+ - so my intitial UML design is to have three classes, one for the pet's information, one for assigning what tasks to do for the pet and the final one to hold the plan. 
+
+ the interactions would be the consutrcor, which is the pet class, would have the pet ifnromatino as the child class, just to keep things organized, and since different pets have different needs. Then the plan option can either extend the infromation class or just see it's values to make a plan based on what tasks need to be done. Finally, there would be a contraints class, for th users time schedule, priorty and owner preference.
+
+ Class: Pet -> holds pet name and breed -> constructs a new pet object 
+ Class: PetInfo -> holds the ifnromaiton whether the pet needs walks, feeding, meds, enrichment, grooming, etc. -> has unique tasks, and hodls a bool to see if the pe needs it, and additional variables for the duration, intensity, qunitiy etcs. and special infromation entered by the user 
+ Class: schedule -> generates the plan for the day based on the information -> can access the petInfo class, but only sees it to make a schdule. 
+ Class: OwnerConstrinats -> has data points for the users schedule, references liek walk timings and priorty of tasks. The schedule class can acces this to make the schedule. 
+
+
+
 **b. Design changes**
 
 - Did your design change during implementation?

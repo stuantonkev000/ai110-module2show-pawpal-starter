@@ -1,15 +1,43 @@
 classDiagram
-    %% Replace the placeholders below with your actual classes, attributes, methods, and relationships.
-    %% Keep this file updated so it matches your final implementation.
+    %% PawPal - pet care daily plan generator
 
-    class ClassName {
-        +type attribute
-        +method() returnType
+    class Pet {
+        +String name
+        +String breed
+        +PetInfo info
+        +Pet(name, breed)
     }
 
-    class AnotherClass {
-        +type attribute
-        +method() returnType
+    class PetInfo {
+        +bool needsWalks
+        +bool needsFeeding
+        +bool needsMeds
+        +bool needsEnrichment
+        +bool needsGrooming
+        +int walkDuration
+        +String walkIntensity
+        +int feedingQuantity
+        +String medsNotes
+        +String specialNotes
+        +addTask(name, needed, details)
+        +getTasks() Task[]
     }
 
-    ClassName --> AnotherClass : relationship
+    class OwnerConstraints {
+        +String[] availableTimes
+        +Time preferredWalkTime
+        +Map~String,int~ taskPriority
+        +String ownerPreferences
+        +getPriority(task) int
+    }
+
+    class Schedule {
+        +Date day
+        +ScheduledTask[] plan
+        +generatePlan(petInfo, constraints) ScheduledTask[]
+        +print() void
+    }
+
+    Pet "1" *-- "1" PetInfo : has
+    Schedule ..> PetInfo : reads
+    Schedule ..> OwnerConstraints : reads
